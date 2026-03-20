@@ -148,7 +148,6 @@
                 <tr>
                     <th>단계</th>
                     <th>선택한 감도</th>
-                    <th>계산된 새 기준값</th>
                 </tr>
             </table>
         </div>
@@ -218,11 +217,11 @@
                 currentBase = (currentBase + high) / 2;
             }
 
+            // 표에 단계와 선택한 감도 2개만 추가되도록 수정됨
             let table = document.getElementById("history-table");
             let row = table.insertRow(-1);
             row.insertCell(0).innerText = iteration + "단계";
             row.insertCell(1).innerText = `${selectedValue.toFixed(3)} (${choiceText})`;
-            row.insertCell(2).innerText = currentBase.toFixed(3);
 
             iteration++;
             updateValues();
