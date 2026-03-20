@@ -52,7 +52,7 @@
             transition: 0.3s;
         }
         button:hover { background-color: #e03e4d; }
-        .hidden { display: none; }
+        .hidden { display: none !important; }
         .highlight { color: #ff4655; font-size: 24px; font-weight: bold; }
         .box { background-color: #0f1923; padding: 15px; margin: 15px 0; border-left: 5px solid #ff4655; }
         
@@ -128,18 +128,6 @@
                 <h3>👉 2번 (High 감도): <span id="val-high" class="highlight"></span></h3>
                 <button onclick="choose('high')">2번이 더 편함</button>
             </div>
-
-            <div id="history-section" class="hidden" style="margin-top: 35px; text-align: left;">
-                <h3 style="font-size: 16px; margin-bottom: 5px;">📊 내 감도 수렴 기록</h3>
-                <p style="font-size: 12px; color: #999; margin-top: 0;">오차가 어떻게 줄어드는지 실시간으로 확인하세요.</p>
-                <table id="history-table">
-                    <tr>
-                        <th>단계</th>
-                        <th>선택한 감도</th>
-                        <th>계산된 새 기준값</th>
-                    </tr>
-                </table>
-            </div>
         </div>
 
         <div id="step-result" class="hidden">
@@ -149,9 +137,22 @@
                 <p>추천 인게임 감도: <span id="final-sens" class="highlight"></span></p>
                 <p>최종 eDPI: <span id="final-edpi" style="font-weight:bold;"></span></p>
             </div>
-            <p>이제 게임을 하면서 0.01 단위로만 미세 조정하세요!</p>
+            <p style="color: #ff4655; font-weight: bold;">아래 기록 표에서 내 손에 더 잘 맞았던 감도를 선택해 사용해도 좋습니다!</p>
             <button onclick="location.reload()">다시 테스트하기</button>
         </div>
+
+        <div id="history-section" class="hidden" style="margin-top: 35px; text-align: left;">
+            <h3 style="font-size: 16px; margin-bottom: 5px;">📊 내 감도 수렴 기록</h3>
+            <p style="font-size: 12px; color: #999; margin-top: 0;">오차가 어떻게 줄어드는지 확인하세요. (최종 결과보다 중간에 고른 감도가 더 잘 맞는다면 그 값을 써도 됩니다!)</p>
+            <table id="history-table">
+                <tr>
+                    <th>단계</th>
+                    <th>선택한 감도</th>
+                    <th>계산된 새 기준값</th>
+                </tr>
+            </table>
+        </div>
+
     </div>
 
     <script>
@@ -201,7 +202,6 @@
             document.getElementById("val-low").innerText = low.toFixed(3);
             document.getElementById("val-high").innerText = high.toFixed(3);
             
-            // 진행률 바 업데이트
             let progressPercentage = ((iteration - 1) / maxIterations) * 100;
             document.getElementById("progress-bar").style.width = progressPercentage + "%";
         }
@@ -218,7 +218,6 @@
                 currentBase = (currentBase + high) / 2;
             }
 
-            // 실시간 표에 데이터 행(Row) 추가
             let table = document.getElementById("history-table");
             let row = table.insertRow(-1);
             row.insertCell(0).innerText = iteration + "단계";
@@ -237,7 +236,7 @@
                 
                 document.getElementById("final-sens").innerText = currentBase.toFixed(3);
                 document.getElementById("final-edpi").innerText = (currentBase * userDPI).toFixed(1);
-            }, 500); // 100% 차오르는 애니메이션을 잠깐 보여주고 결과창으로 넘김
+            }, 500);
         }
     </script>
 </body>
