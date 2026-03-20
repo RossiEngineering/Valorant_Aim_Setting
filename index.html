@@ -1,195 +1,244 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
-	<head>
-		<meta charset="UTF-8">
-		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6178534232191607"
-     crossorigin="anonymous"></script>
-		<meta name="google-site-verification" content="akYfwt-OqmrKjqJXIailodWdrH7HaLzNtKCKvXpB9Qc" />
-		<meta name="description" content="발로란트 유저를 위한 맞춤형 에임 감도(PSA) 및 eDPI 계산기입니다. 나에게 딱 맞는 최적의 감도를 찾아보세요!">
-		<meta name="keywords" content="발로란트, 발로란트 감도, 에임 감도, PSA, eDPI, 발로란트 감도 계산기, 발로란트 eDPI">
-		<meta property="og:title" content="발로란트 맞춤 감도(PSA) 계산기">
-		<meta property="og:description" content="내 마우스 DPI와 인게임 감도로 완벽한 에임 감도를 찾아보세요!">
-		<meta property="og:type" content="website">
-			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-				<title>발로란트 맞춤 감도(PSA) 계산기</title>
-				<style>
-					/* 발로란트 스타일 CSS 디자인 */
-					body {
-					background-color: #0f1923; /* 발로란트 배경색 */
-					color: #ece8e1; /* 발로란트 텍스트색 */
-					font-family: 'Malgun Gothic', sans-serif;
-					text-align: center;
-					margin: 0;
-					padding: 20px;
-					}
-					.container {
-					max-width: 600px;
-					margin: 40px auto;
-					background-color: #1f2731;
-					padding: 30px;
-					border-radius: 8px;
-					box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-					}
-					h1 { color: #ff4655; /* 발로란트 레드 */ }
-					input {
-					padding: 10px;
-					margin: 10px;
-					width: 80%;
-					border: 2px solid #ece8e1;
-					background-color: #0f1923;
-					color: white;
-					font-size: 16px;
-					}
-					button {
-					background-color: #ff4655;
-					color: white;
-					border: none;
-					padding: 12px 24px;
-					font-size: 16px;
-					font-weight: bold;
-					cursor: pointer;
-					margin: 10px;
-					border-radius: 4px;
-					transition: 0.3s;
-					}
-					button:hover { background-color: #e03e4d; }
-					.hidden { display: none; }
-					.highlight { color: #ff4655; font-size: 24px; font-weight: bold; }
-					.box { background-color: #0f1923; padding: 15px; margin: 15px 0; border-left: 5px solid #ff4655; }
-				</style>
-			</head>
-	<body>
+<head>
+    <meta charset="UTF-8">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6178534232191607" crossorigin="anonymous"></script>
+    <meta name="google-site-verification" content="akYfwt-OqmrKjqJXIailodWdrH7HaLzNtKCKvXpB9Qc" />
+    <meta name="description" content="발로란트 유저를 위한 맞춤형 에임 감도(PSA) 및 eDPI 계산기입니다. 나에게 딱 맞는 최적의 감도를 찾아보세요!">
+    <meta name="keywords" content="발로란트, 발로란트 감도, 에임 감도, PSA, eDPI, 발로란트 감도 계산기, 발로란트 eDPI">
+    <meta property="og:title" content="발로란트 맞춤 감도(PSA) 계산기">
+    <meta property="og:description" content="내 마우스 DPI와 인게임 감도로 완벽한 에임 감도를 찾아보세요!">
+    <meta property="og:type" content="website">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>발로란트 맞춤 감도(PSA) 계산기</title>
+    <style>
+        /* 발로란트 스타일 CSS 디자인 */
+        body {
+            background-color: #0f1923; /* 발로란트 배경색 */
+            color: #ece8e1; /* 발로란트 텍스트색 */
+            font-family: 'Malgun Gothic', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: #1f2731;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        h1 { color: #ff4655; /* 발로란트 레드 */ }
+        input {
+            padding: 10px;
+            margin: 10px;
+            width: 80%;
+            border: 2px solid #ece8e1;
+            background-color: #0f1923;
+            color: white;
+            font-size: 16px;
+        }
+        button {
+            background-color: #ff4655;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+        button:hover { background-color: #e03e4d; }
+        .hidden { display: none; }
+        .highlight { color: #ff4655; font-size: 24px; font-weight: bold; }
+        .box { background-color: #0f1923; padding: 15px; margin: 15px 0; border-left: 5px solid #ff4655; }
+        
+        /* 진행률 바 디자인 */
+        .progress-container {
+            width: 100%;
+            background-color: #0f1923;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            border: 1px solid #444;
+        }
+        .progress-bar {
+            height: 10px;
+            background-color: #ff4655;
+            width: 0%;
+            transition: width 0.4s ease;
+        }
+        
+        /* 감도 기록 표 디자인 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        th, td {
+            border: 1px solid #444;
+            padding: 10px;
+            text-align: center;
+        }
+        th { background-color: #0f1923; color: #ece8e1; }
+    </style>
+</head>
+<body>
 
-		<div class="container">
-			<h1>🎮 발로란트 eDPI & PSA 분석기</h1>
-			<div style="background-color: #1a212a; padding: 20px; border-radius: 8px; margin-bottom: 25px; text-align: left; border-left: 4px solid #ece8e1; font-size: 14px; line-height: 1.6;">
-        <h3 style="color: #ece8e1; margin-top: 0; font-size: 16px;">🔍 작동 원리: 느낌이 아닌 '수학'으로 찾습니다</h3>
-        <p style="margin-bottom: 10px;">이 계산기는 단순한 짐작이 아닙니다. 해외 프로게이머와 에임 코치들이 사용하는 <strong>PSA(Perfect Sensitivity Approximation)</strong> 방법론을 자동화했습니다.</p>
-        <ul style="padding-left: 20px; margin: 0;">
-            <li style="margin-bottom: 8px;"><strong>이진 탐색(Binary Search):</strong> 제시된 두 감도 중 '더 편한 쪽'을 선택할 때마다, 프로그램이 오차 범위를 정확히 절반씩(1/2) 좁혀 나갑니다.</li>
-            <li><strong>왜 7단계인가요?:</strong> 이 과정을 7번 반복하면 수학적으로 유저의 신체 반응에 가장 완벽하게 수렴하는 소수점 셋째 자리의 최종 감도가 도출됩니다.</li>
-        </ul>
+    <div class="container">
+        <h1>🎮 발로란트 eDPI & PSA 분석기</h1>
+        
+        <div style="background-color: #1a212a; padding: 20px; border-radius: 8px; margin-bottom: 25px; text-align: left; border-left: 4px solid #ece8e1; font-size: 14px; line-height: 1.6;">
+            <h3 style="color: #ece8e1; margin-top: 0; font-size: 16px;">🔍 작동 원리: 느낌이 아닌 '수학'으로 찾습니다</h3>
+            <p style="margin-bottom: 10px;">기존의 불친절한 계산기들처럼 수동으로 360도 회전 반경을 자로 잴 필요가 없습니다. 내 현재 감도를 기준으로 시작하는 <strong>PSA(Perfect Sensitivity Approximation)</strong> 알고리즘을 체험해 보세요.</p>
+            <ul style="padding-left: 20px; margin: 0;">
+                <li style="margin-bottom: 8px;"><strong>이진 탐색(Binary Search):</strong> 제시된 두 감도 중 '더 편한 쪽'을 선택할 때마다, 프로그램이 오차 범위를 정확히 절반씩(1/2) 좁혀 나갑니다.</li>
+                <li><strong>왜 7단계인가요?:</strong> 이 과정을 7번 반복하면 수학적으로 유저의 신체 반응에 가장 완벽하게 수렴하는 소수점 셋째 자리의 최종 감도가 도출됩니다.</li>
+            </ul>
+        </div>
+
+        <div id="step-input">
+            <p>현재 사용 중인 마우스 설정과 인게임 감도를 입력하세요.</p>
+            <input type="number" id="input-dpi" placeholder="마우스 DPI (예: 800)">
+            <input type="number" step="0.01" id="input-sens" placeholder="인게임 감도 (예: 0.35)">
+            <br>
+            <button onclick="startTest()">eDPI 분석 및 테스트 시작</button>
+        </div>
+
+        <div id="step-test" class="hidden">
+            <div class="box" id="edpi-result"></div>
+            
+            <div class="progress-container">
+                <div id="progress-bar" class="progress-bar"></div>
+            </div>
+
+            <h2 id="iteration-text">단계 1 / 7</h2>
+            <p>훈련장에서 아래 두 감도를 쏘아보고 <strong>더 편한 감도</strong>를 선택하세요.</p>
+
+            <div>
+                <h3>👉 1번 (Low 감도): <span id="val-low" class="highlight"></span></h3>
+                <button onclick="choose('low')">1번이 더 편함</button>
+            </div>
+
+            <div style="margin-top: 20px;">
+                <h3>👉 2번 (High 감도): <span id="val-high" class="highlight"></span></h3>
+                <button onclick="choose('high')">2번이 더 편함</button>
+            </div>
+
+            <div id="history-section" class="hidden" style="margin-top: 35px; text-align: left;">
+                <h3 style="font-size: 16px; margin-bottom: 5px;">📊 내 감도 수렴 기록</h3>
+                <p style="font-size: 12px; color: #999; margin-top: 0;">오차가 어떻게 줄어드는지 실시간으로 확인하세요.</p>
+                <table id="history-table">
+                    <tr>
+                        <th>단계</th>
+                        <th>선택한 감도</th>
+                        <th>계산된 새 기준값</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div id="step-result" class="hidden">
+            <h2>🎉 테스트 완료!</h2>
+            <p>유저님을 위한 최종 맞춤 감도입니다.</p>
+            <div class="box">
+                <p>추천 인게임 감도: <span id="final-sens" class="highlight"></span></p>
+                <p>최종 eDPI: <span id="final-edpi" style="font-weight:bold;"></span></p>
+            </div>
+            <p>이제 게임을 하면서 0.01 단위로만 미세 조정하세요!</p>
+            <button onclick="location.reload()">다시 테스트하기</button>
+        </div>
     </div>
 
-			<div id="step-input">
-				<p>현재 사용 중인 마우스 설정과 인게임 감도를 입력하세요.</p>
-				<input type="number" id="input-dpi" placeholder="마우스 DPI (예: 800)">
-					<input type="number" step="0.01" id="input-sens" placeholder="인게임 감도 (예: 0.35)">
-						<br>
-							<button onclick="startTest()">eDPI 분석 및 테스트 시작</button>
-						</div>
+    <script>
+        let userDPI = 0;
+        let currentBase = 0;
+        let iteration = 1;
+        let maxIterations = 7;
+        let low = 0;
+        let high = 0;
 
-			<div id="step-test" class="hidden">
-				<div class="box" id="edpi-result"></div>
-				<h2 id="iteration-text">단계 1 / 7</h2>
-				<p>
-					훈련장에서 아래 두 감도를 쏘아보고 <strong>더 편한 감도</strong>를 선택하세요.
-				</p>
+        function startTest() {
+            userDPI = parseInt(document.getElementById("input-dpi").value);
+            let sens = parseFloat(document.getElementById("input-sens").value);
 
-				<div>
-					<h3>
-						👉 1번 (Low 감도): <span id="val-low" class="highlight"></span>
-					</h3>
-					<button onclick="choose('low')">1번이 더 편함</button>
-				</div>
+            if(!userDPI || !sens) {
+                alert("DPI와 감도를 정확히 숫자로 입력해주세요!");
+                return;
+            }
 
-				<div style="margin-top: 20px;">
-					<h3>
-						👉 2번 (High 감도): <span id="val-high" class="highlight"></span>
-					</h3>
-					<button onclick="choose('high')">2번이 더 편함</button>
-				</div>
-			</div>
+            currentBase = sens;
+            let edpi = userDPI * sens;
 
-			<div id="step-result" class="hidden">
-				<h2>🎉 테스트 완료!</h2>
-				<p>유저님을 위한 최종 맞춤 감도입니다.</p>
-				<div class="box">
-					<p>
-						추천 인게임 감도: <span id="final-sens" class="highlight"></span>
-					</p>
-					<p>
-						최종 eDPI: <span id="final-edpi" style="font-weight:bold;"></span>
-					</p>
-				</div>
-				<p>이제 게임을 하면서 0.01 단위로만 미세 조정하세요!</p>
-				<button onclick="location.reload()">다시 테스트하기</button>
-			</div>
-		</div>
+            let diagMsg = `📌 참고: 발로란트 프로게이머 평균 eDPI는 약 282 입니다.<br><br>
+            유저님의 현재 eDPI는 <strong>${edpi.toFixed(1)}</strong> 입니다.<br>`;
+            
+            if(edpi < 200) diagMsg += "💡 진단: 프로게이머 평균 대비 '저감도'입니다.";
+            else if(edpi <= 400) diagMsg += "💡 진단: 가장 이상적인 '평균 감도' 대역입니다.";
+            else diagMsg += "💡 진단: 프로게이머 평균 대비 '고감도'입니다.";
 
-		<script>
-			// 변수 세팅
-			let userDPI = 0;
-			let currentBase = 0;
-			let iteration = 1;
-			let maxIterations = 7;
-			let low = 0;
-			let high = 0;
+            document.getElementById("edpi-result").innerHTML = diagMsg;
+            document.getElementById("step-input").classList.add("hidden");
+            document.getElementById("step-test").classList.remove("hidden");
 
-			// 1. 테스트 시작 함수
-			function startTest() {
-			userDPI = parseInt(document.getElementById("input-dpi").value);
-			let sens = parseFloat(document.getElementById("input-sens").value);
+            updateValues();
+        }
 
-			if(!userDPI || !sens) {
-			alert("DPI와 감도를 정확히 숫자로 입력해주세요!");
-			return;
-			}
+        function updateValues() {
+            if(iteration > maxIterations) {
+                showResult();
+                return;
+            }
 
-			currentBase = sens;
-			let edpi = userDPI * sens;
+            low = currentBase * 0.5;
+            high = currentBase * 1.5;
 
-			// eDPI 진단 메시지 작성
-			let diagMsg =`📌 참고: 발로란트 프로게이머 평균 eDPI는 약 282 입니다.<br><br>
-			유저님의 현재 eDPI는 <strong>${edpi.toFixed(1)}</strong> 입니다.<br>`;
-				if(edpi < 200) diagMsg += "💡 진단: 프로게이머 평균 대비 '저감도'입니다.";
-        else if(edpi <= 400) diagMsg += "💡 진단: 가장 이상적인 '평균 감도' 대역입니다.";
-				else diagMsg += "💡 진단: 프로게이머 평균 대비 '고감도'입니다.";
+            document.getElementById("iteration-text").innerText = `단계 ${iteration} / ${maxIterations}`;
+            document.getElementById("val-low").innerText = low.toFixed(3);
+            document.getElementById("val-high").innerText = high.toFixed(3);
+            
+            // 진행률 바 업데이트
+            let progressPercentage = ((iteration - 1) / maxIterations) * 100;
+            document.getElementById("progress-bar").style.width = progressPercentage + "%";
+        }
 
-				document.getElementById("edpi-result").innerHTML = diagMsg;
+        function choose(choice) {
+            document.getElementById("history-section").classList.remove("hidden");
+            
+            let selectedValue = (choice === 'low') ? low : high;
+            let choiceText = (choice === 'low') ? '1번 (Low)' : '2번 (High)';
+            
+            if(choice === 'low') {
+                currentBase = (currentBase + low) / 2;
+            } else if(choice === 'high') {
+                currentBase = (currentBase + high) / 2;
+            }
 
-				// 화면 전환 (입력창 숨기고 테스트창 표시)
-				document.getElementById("step-input").classList.add("hidden");
-				document.getElementById("step-test").classList.remove("hidden");
+            // 실시간 표에 데이터 행(Row) 추가
+            let table = document.getElementById("history-table");
+            let row = table.insertRow(-1);
+            row.insertCell(0).innerText = iteration + "단계";
+            row.insertCell(1).innerText = `${selectedValue.toFixed(3)} (${choiceText})`;
+            row.insertCell(2).innerText = currentBase.toFixed(3);
 
-				updateValues(); // 첫 번째 계산 실행
-				}
+            iteration++;
+            updateValues();
+        }
 
-				// 2. High / Low 값 계산 및 화면 업데이트
-				function updateValues() {
-				if(iteration > maxIterations) {
-				showResult();
-				return;
-				}
-
-				low = currentBase * 0.5;
-				high = currentBase * 1.5;
-
-				document.getElementById("iteration-text").innerText = `단계 ${iteration} / ${maxIterations}`;
-				document.getElementById("val-low").innerText = low.toFixed(3);
-				document.getElementById("val-high").innerText = high.toFixed(3);
-				}
-
-				// 3. 유저 선택 처리 (핵심 알고리즘)
-				function choose(choice) {
-				if(choice === 'low') {
-				currentBase = (currentBase + low) / 2;
-				} else if(choice === 'high') {
-				currentBase = (currentBase + high) / 2;
-				}
-				iteration++;
-				updateValues();
-				}
-
-				// 4. 최종 결과 표시
-				function showResult() {
-				document.getElementById("step-test").classList.add("hidden");
-				document.getElementById("step-result").classList.remove("hidden");
-
-				document.getElementById("final-sens").innerText = currentBase.toFixed(3);
-				document.getElementById("final-edpi").innerText = (currentBase * userDPI).toFixed(1);
-				}
-			</script>
-
-	</body>
+        function showResult() {
+            document.getElementById("progress-bar").style.width = "100%";
+            setTimeout(() => {
+                document.getElementById("step-test").classList.add("hidden");
+                document.getElementById("step-result").classList.remove("hidden");
+                
+                document.getElementById("final-sens").innerText = currentBase.toFixed(3);
+                document.getElementById("final-edpi").innerText = (currentBase * userDPI).toFixed(1);
+            }, 500); // 100% 차오르는 애니메이션을 잠깐 보여주고 결과창으로 넘김
+        }
+    </script>
+</body>
 </html>
